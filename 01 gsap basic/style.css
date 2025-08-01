@@ -1,0 +1,31 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #111;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.box-container,.heading-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+}
+
+.box{
+    height: 100px;
+    width: 100px;
+    background-color: aqua;
+}
+
+.overflow-hidden{
+    overflow: hidden;
+}

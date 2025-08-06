@@ -23,14 +23,14 @@ gsap.from("#page2 #box2", {
 });
 
 gsap.to("#page3 h1", {
-  transform: "translateX(-100%)",
+  // transform: "translateX()",
+  x: "-100%",
   scrollTrigger: {
     trigger: "#page3",
     scroller: "body",
     start: "top 0%",
     end: "top -100%",
     scrub: 2,
-    pin:true
+    pin: true,
   },
-
 });

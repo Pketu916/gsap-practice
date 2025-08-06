@@ -1,0 +1,57 @@
+body {
+    background: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    /* max-width: 1140px; */
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#logo {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+svg {
+    /* overflow: hidden; */
+    width: 100%;
+    height: auto;
+}
+
+.svg-wrapper {
+    height: 1500px;
+    /* overflow: hidden; */
+    background-color: aquamarine;
+    position: relative;
+}
+
+#heroCircle1 {
+    position: absolute;
+    top: 0;
+}
+
+#heroCircle2 {
+    position: absolute;
+    top: 0;
+    padding: 100px;
+}
+
+#heroCircle3 {
+    position: absolute;
+    top: 0;
+    padding: 200px;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SVG Path Animation with GSAP</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
+    <style>
+        .svg_wrapper {
+            width: 600px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="svg_wrapper">
+        <svg width="575" height="480" viewBox="0 0 575 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path id="path1" d="M286 193V419C286 452.137 259.137 479 226 479H0" stroke="#EDA942" stroke-width="2" />
+            <path id="path2" d="M574 96.5H346.5C313.363 96.5 286.5 123.363 286.5 156.5V192.5" stroke="#EDA942"
+                stroke-width="2" />
+            <path id="path3" d="M332 98.5H84.5" stroke="#EDA942" stroke-width="2" />
+            <path id="path4" d="M401 0.5V36.5C401 69.6371 427.863 96.5 461 96.5H498" stroke="#EDA942"
+                stroke-width="2" />
+
+            <!-- Separate dots -->
+            <rect id="dot1" x="0" y="0" width="11" height="11" fill="red" />
+            <rect id="dot2" x="0" y="0" width="11" height="11" fill="blue" />
+            <rect id="dot3" x="0" y="0" width="11" height="11" fill="green" />
+            <rect id="dot4" x="0" y="0" width="11" height="11" fill="orange" />
+        </svg>
+    </div>
+
+ <script>
+gsap.registerPlugin(MotionPathPlugin);
+
+// durations
+const duration1 = 3; // path1
+const duration2 = 3; // path2
+const duration3 = 2; // path3
+const duration4 = 4; // path4
+
+const tl = gsap.timeline({ defaults: { ease: "power1.inOut" }, repeat: -1 });
+
+// 1. dot1 moves alone
+tl.to("#dot1", {
+    duration: duration1,
+    motionPath: { path: "#path1", align: "#path1", alignOrigin: [0.5, 0.5], start: 1, end: 0 }
+});
+
+// 2. dot2, dot3, dot4 start together **after dot1 finishes**
+tl.to("#dot2", {
+    duration: duration2,
+    motionPath: { path: "#path2", align: "#path2", alignOrigin: [0.5, 0.5], start: 1, end: 0 }
+}, ">0");
+
+tl.to("#dot3", {
+    duration: duration3,
+    motionPath: { path: "#path3", align: "#path3", alignOrigin: [0.5, 0.5], start: 1, end: 0 }
+}, "<"); // start at same time as dot2
+
+tl.to("#dot4", {
+    duration: duration4,
+    motionPath: { path: "#path4", align: "#path4", alignOrigin: [0.5, 0.5], start: 0, end: 1 }
+}, "<"); // start at same time as dot2
+</script>
+
+
+</body>
+
+</html>
